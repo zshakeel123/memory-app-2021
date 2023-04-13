@@ -21,6 +21,7 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable {
             cards.append(Card(id: pairIndex * 2, content: content))
             cards.append(Card(id: pairIndex * 2 + 1, content: content))
         }
+        shuffle()
     }
     
     mutating func choose(_ card: Card){
@@ -44,6 +45,10 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable {
             
             cards[chosenIndex].isFaceUp.toggle()
         }
+    }
+    
+    mutating func shuffle() {
+        cards.shuffle()
     }
     
     struct Card: Identifiable {
